@@ -21,7 +21,7 @@ discrim.events = rbind(discrim.events,
                                   n = 0))
 
 ggplot(discrim.events, aes(n)) +
-  geom_histogram(fill = "white", color = "black", bins=20) +
+  geom_histogram(fill = "white", color = "black", bins=30) +
   theme_bw() +
   scale_x_continuous(name="Number of events reported", breaks = c(0, 5, 10, 15, 20, 25, 30)) +
   scale_y_continuous(name="Number of participants", breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50)) +
@@ -32,6 +32,15 @@ ggplot(discrim.events, aes(n)) +
         strip.text = element_text(size=16))
 
 ggsave("./5 TigerAware/HistogramEventFrequency.jpg", width = 10, height = 7, unit="in")
+
+# count numbers of Ps with 0 and 1 events
+nrow(discrim.events[discrim.events$n == 0,])
+nrow(discrim.events[discrim.events$n == 1,])
+nrow(discrim.events[discrim.events$n == 2,])
+nrow(discrim.events[discrim.events$n == 3,])
+
+mean(discrim.events$n)
+median(discrim.events$n)
 
 # Figure 2: Immediate and lagged effects
 
